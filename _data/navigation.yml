@@ -1,6 +1,6 @@
 - name: Home
-  link: 
+  link: /
 - name: Reverex
-  link: Reverex.html
+  link: /Reverex.html
 - name: VoxelTest
-  link: VoxelTest.html
+  link: /VoxelTest.html
