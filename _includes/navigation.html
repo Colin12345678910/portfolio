@@ -8,7 +8,8 @@
   
     <div class="Selectables">
 
-      
+    <!-- Loops through all links in navigation.yml and adds it to the above bar, if it's our current link, we change the element's color so it appears selected. -->
+
         {% for item in site.data.navigation %}
           <div 
 
@@ -18,12 +19,21 @@
             class="special"
           {% endif %}> 
 
-            <a href="{{ site.baseurl }}{{ item.link }}" {% if page.url == item.link %}class = "Current"{% else %}class = "special" {% endif %}>
+            <a href="{{ site.baseurl }}{{ item.link }}" 
+
+            {% if page.url == item.link %}
+            lass = "Current"
+            {% else %}class = "special"
+             {% endif %}>
+
               {{ item.name }}
             </a>
           </div>
         {% endfor %}
-      
+        
+        <!-- This needs to be done outside of the navigation loop as this goes out of the webpage-->
+
+        <a class ="special" href="https://github.com/Colin12345678910">Github</a>
 
     </div>
     

@@ -1,8 +1,6 @@
 - name: Home
-  link: /
-- name: Github
-  link: https://github.com/Colin12345678910
+  link: 
 - name: Reverex
-  link: /Reverex.html
+  link: Reverex.html
 - name: VoxelTest
-  link: /VoxelTest.html
+  link: VoxelTest.html
