@@ -23,9 +23,10 @@ body {
 p
 {
     font:
-    1.0em/100% "Courier Prime",
+    1.0em/100% "Open Sans",
     Arial,
-    monospace;
+    sans-serif;
+    font-weight: 200;
     line-height: 1.8;
     margin-left: 17.5%;
     margin-right: 17.5%;
@@ -34,9 +35,10 @@ p
 li
 {
     font:
-    1.5em/100% "Courier Prime",
+    1.5em/100% "Open Sans",
     Arial,
-    monospace;
+    sans-serif;
+    font-weight: 500;
     
     margin-left: 15%;
     margin-right: 15%;
@@ -52,6 +54,11 @@ h1
 }
 h2
 {
+    font:
+    1.0em/100% "Open Sans",
+    Arial,
+    sans-serif;
+    font-weight: 500;
     margin-left: 200px;
     top: 100%;
     bottom: 50%;
