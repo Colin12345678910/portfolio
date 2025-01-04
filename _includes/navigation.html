@@ -7,40 +7,61 @@
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 
 
+
+
 <nav>
-  <div class="box"><div class="title">Colin Doubrough</div></div>
-  <div class="UpperLine"></div>
   
+  <div class="Toolbar">
+    <div class="box"><div class="title">Colin Doubrough</div></div>
+  
+
     <div class="Selectables">
 
-    <!-- Loops through all links in navigation.yml and adds it to the above bar, if it's our current link, we change the element's color so it appears selected. -->
+      <!-- Loops through all links in navigation.yml and adds it to the above bar, if it's our current link, we change the element's color so it appears selected. -->
 
-        {% for item in site.data.navigation %}
-          <div 
-
-          {% if page.url == item.link %}
-            class ="Current"
-          {% else %} 
-            class="special"
-          {% endif %}> 
-
-            <a href="{{ site.baseurl }}{{ item.link }}" 
+          {% for item in site.data.navigation %}
+            <div 
 
             {% if page.url == item.link %}
-            class = "Current"
-            {% else %}class = "special"
-             {% endif %}>
+              class ="Current"
+            {% else %} 
+              class="special"
+            {% endif %}> 
 
-              {{ item.name }}
-            </a>
-          </div>
-        {% endfor %}
+              <a href="{{ site.baseurl }}{{ item.link }}" 
+
+              {% if page.url == item.link %}
+              class = "Current"
+              {% else %}class = "special"
+              {% endif %}>
+
+                {{ item.name }}
+              </a>
+            </div>
+
+
+          
         
-        <!-- This needs to be done outside of the navigation loop as this goes out of the webpage-->
 
-        <a class ="special" href="https://github.com/Colin12345678910">Github</a>
+          {% endfor %}
+          
+          
+          
+          <!-- This needs to be done outside of the navigation loop as this goes out of the webpage-->
 
-    </div>
+          <a class ="special" href="https://github.com/Colin12345678910">Github</a>
+
+      </div>
+
+      <div class="UpperLine"></div>
+
+      {% if page.more == true %}
+            <div class="Selectables"></div>
+            <div class="UpperLine"></div>
+      {% endif %}
+  </div>
+  
+    
     
   <footer>
     <div class="Line"></div>

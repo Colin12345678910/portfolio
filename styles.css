@@ -175,10 +175,8 @@ h2
     align-self: baseline;
     position:fixed;
     width: 100%;
-    min-height: 1px;
-    max-height: 3px;
-    top: 13%;
-    height: 8%;
+    min-height: 6px;
+    max-height: 12px;
     color:white;
     background-color:rgb(228, 240, 240);
 }
