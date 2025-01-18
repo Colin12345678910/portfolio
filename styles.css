@@ -13,7 +13,8 @@ body {
       Arial,
       monospace;
     padding: 0em;
-    padding-top: 15vh;
+    min-height: 200px;
+    padding-top: clamp(150px, calc(300px - 5vw), 10000px);
     padding-bottom: 15vh;
     margin: 0 auto;
     /*max-width: 100em;*/
@@ -26,6 +27,7 @@ p
     1.0em/100% "Open Sans",
     Arial,
     sans-serif;
+    align-self: auto;
     font-weight: 200;
     line-height: 1.8;
     margin-left: 17.5%;
@@ -118,7 +120,7 @@ h2
     justify-content:baseline;
     align-items:baseline;
     background-repeat: repeat-x;
-    position: fixed;
+    position:fixed;
     margin: 0px;
     width: 100%;
     top: 0;
