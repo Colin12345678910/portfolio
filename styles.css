@@ -14,9 +14,12 @@ body {
       monospace;
     padding: 0em;
     min-height: 200px;
-    padding-top: clamp(150px, calc(300px - 5vw), 10000px);
+    padding-top: clamp(250px, calc(300px - 5vw), 10000px);
     padding-bottom: 15vh;
     margin: 0 auto;
+    background-repeat:no-repeat;
+    background-image:-moz-linear-gradient(rgb(61, 52, 95), rgb(39, 36, 51))
+    
     /*max-width: 100em;*/
     
   }
@@ -82,36 +85,46 @@ h2
 .special
 {
     color:rgb(255, 255, 255);
-    margin-left: 25px;
-    margin-right: 25px;
+    
     background-color: rgb(39, 32, 68);
     height: 100%;
+    accent-color:white;
     align-content: center;
+    text-align: center;
     text-decoration: none;
+}
+.special:hover
+{
+    background-color: rgb(200, 182, 255);
+}
+.Link
+{
+    margin-left: 25px;
+    margin-right: 25px;
+    color:white;
+    text-decoration: none;
+    text-align:center;
 }
 .Current
 {
     color:rgb(255, 255, 255);
-    margin-left: 25px;
-    margin-right: 25px;
     background-color: rgb(135, 108, 216);
     height: 100%;
-    align-content: center;
     text-decoration: none;
 }
 .box
 {
-    background-repeat: repeat-x;
     position: sticky;
     text-align:justify;
     margin: 0;
     list-style-type: none;
     flex-grow: 1;
     width: 100%;
-    min-height: 25px;
+    min-height: 125px;
     top: 0%;
     height: 50%;
     color:white;
+    background-image:url("assets/images/Voxeltest.png");
     background-color:rgb(61, 52, 95);
 }
 .Toolbar
@@ -193,7 +206,7 @@ h2
     min-height: 4px;
     max-height: 12px;
     color:white;
-    background-color:rgb(65, 59, 83);
+    background-color:rgb(82, 67, 128);
 }
 
 iframe 
