@@ -28,13 +28,7 @@
               class="special"
             {% endif %}> 
 
-              <a href="{{ site.baseurl }}{{ item.link }}" 
-
-              {% if page.url == item.link %}
-              class = "Current"
-              {% else %}class = "special"
-              {% endif %}>
-
+              <a href="{{ site.baseurl }}{{ item.link }}" class="Link"> 
                 {{ item.name }}
               </a>
             </div>
@@ -59,20 +53,14 @@
             <div class="Selectables">
               {% for item in site.data.UnityTech %}
               <div 
-  
+
               {% if page.url == item.link %}
                 class ="Current"
               {% else %} 
                 class="special"
               {% endif %}> 
   
-                <a href="{{ site.baseurl }}{{ item.link }}" 
-  
-                {% if page.url == item.link %}
-                class = "Current"
-                {% else %}class = "special"
-                {% endif %}>
-  
+                <a href="{{ site.baseurl }}{{ item.link }}" class="Link"> 
                   {{ item.name }}
                 </a>
               </div>
