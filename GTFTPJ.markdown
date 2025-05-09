@@ -40,6 +40,10 @@ Moreover, the grass itself can actually move around and be pushed by points of i
 
 Lastly, to fully integrate the grass into our levels we needed to be able to tweak how the final rendered effect came out. This ended up being achieved by having data textures that would tweak the values for each section of grass. For instance, red handles cutting out the grass, green handles the height and blue controlled how burnt the grass appeared. This rather simple system allowed the artists to easily manipulate the look of the grass to fit the scene better.
 
+Here's a recording of the final system, with everything intergrated.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vYgrUmE_7z8?si=iNx4gKnjeBgZVbkI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 The absolute latest code is not available, but a BRP variant is shared [here](https://github.com/Colin12345678910/InstancedGrass).
 
 - Sound Programming
