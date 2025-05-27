@@ -9,7 +9,7 @@ bkgrnd: assets/images/ReverexDX.jpg
 ---
 Reverex is an asymmetric 2-player cooperative game developed over four months by my group, Tuna Melt Media and ended up taking home third in technical innovation at Toronto's Level Up game showcase.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ZynOaqeCD0A?si=RnlVBbKJSs9V6LSs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://video.fastly.steamstatic.com/store_trailers/257081151/movie480_vp9.webm?t=1733932481" title="Steam video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 [![Level Up Toronto](https://levelupshowcase.com/wp-content/uploads/2024/01/lus-holder-e1706714997565.png)](https://levelupshowcase.com/ "Level Up Toronto")
 
@@ -19,7 +19,7 @@ I was mainly working on mechanics for this project. Specifically, I worked on th
 
 **Below are specific examples of work done on Reverex.**
 
-- Mobius Strip (Normals based gravity)
+- Mobius Strip (Normals-based gravity)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Q38htNfhzWY?si=vbIpVmgH10wjhEWU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -33,9 +33,7 @@ This is another showcase of this gravity technique and displays the versatility 
 
 # Reverex: DX 
 ---
-During the original development of Reverex, we had a lot of ideas to polish and expand the game. As a result, we created Reverex DX; which is an official remake of the project intended to fix significant backend limitations the Original had, and implement previously impossible features.
-
-<iframe width="560" height="315" src="https://video.fastly.steamstatic.com/store_trailers/257081151/movie480_vp9.webm?t=1733932481" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+During the original development of Reverex, we had a lot of ideas to polish and expand the game. As a result, we created Reverex DX, which is an official remake of the project intended to fix significant backend limitations the Original had, and implement previously impossible features.
 
 - Purpose
 
@@ -43,10 +41,10 @@ Reverex DX was developed with the intention of bringing Reverex a bit further in
 
 - Online Networking.
 
-This was my main task during Reverex: DX, I had to work on converting much of the original games code base into something that could run between two machines connected in a network setting. Considering we decided to use the minimal SteamNetworking API for this task, a lot of time was dedicated to creating a toolset that could be used by other developers to generate network capable code. 
+This was my main task during Reverex: DX. I had to work on converting much of the original games code base into something that could run between two machines connected in a network setting. Considering we decided to use the minimal SteamNetworking API for this task, a lot of time was dedicated to creating a toolset that could be used by other developers to generate network capable code. 
 
 The toolset would abstract keeping track of variables and remote calls into several different structures. Variables were abstracted with a synchronized template class that would wrap primitives. Whereas remote calls were abstracted into Netroutine, which behaved like actions and would be invoked on both machines (mostly) simultaneously. 
 
 Ultimately, the toolset had some issues because of its short development time, but it was capable of working as our only major networking tool for the project and allowed us to release our game with online multiplayer via Steam. 
 ## Source
-Sadly, as the project is not only my work, I cannot give out the source. As I can not guarantee other developers will be okay with its distribution. There are [some code snippets](https://github.com/Colin12345678910/COSC3P99/tree/main) available. Moreover, the final game may be downloaded [here](https://store.steampowered.com/app/3177380/REVEREX_DX/)
+Sadly, as the project is not only my work, I cannot give out the source. As I can not guarantee that other developers will be okay with its distribution. There are [some code snippets](https://github.com/Colin12345678910/COSC3P99/tree/main) available. Moreover, the final game may be downloaded [here](https://store.steampowered.com/app/3177380/REVEREX_DX/)
