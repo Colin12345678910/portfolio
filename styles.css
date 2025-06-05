@@ -244,6 +244,16 @@ iframe
 {
     display: block;
     margin: 0 auto;
+    opacity: 100;
+}
+iframe.fadeout
+{
+    opacity: 0;
+}
+iframe.fadein
+{
+    opacity: 100%;
+    transition:ease-in, 1s;
 }
 
 img 
@@ -252,13 +262,31 @@ img
     margin: 0 auto;
     max-width: 100%;
 }
+img.fadeout
+{
+    opacity: 0;
+}
+img.fadein
+{
+    opacity: 100%;
+    transition:ease-in, 1s;
+}
 
-.colinImage
+.image
 {
     display: block;
     margin: 0 auto;
     width: 300px;
     max-width: 100%;
+}
+.image.fadeout
+{
+    opacity: 0;
+}
+.image.fadein
+{
+    opacity: 100%;
+    transition:ease-in, 1s;
 }
 
 hr
