@@ -1,10 +1,10 @@
 - name: Home
   link: /
-- name: VoxelTest
-  link: /VoxelTest.html
 - name: Reverex
   link: /Reverex.html
 - name: GTFPJ
   link: /GTFTPJ.html
+- name: VoxelTest
+  link: /VoxelTest.html
 - name: Unity Graphics Tech
   link: /Shader.html
