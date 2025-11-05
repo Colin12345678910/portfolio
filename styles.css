@@ -41,6 +41,7 @@ p
     flex-shrink: 15px;
     margin:var(--text-margin);
     max-width: var(--text-width);
+    padding-bottom: 50px;
     
     color: rgb(255, 255, 255);
 }
@@ -259,7 +260,7 @@ iframe.fadein
 img 
 {
     display: block;
-    margin: 0 auto;
+    margin: 15 auto;
     max-width: 100%;
 }
 img.fadeout
@@ -275,7 +276,7 @@ img.fadein
 .image
 {
     display: block;
-    margin: 0 auto;
+    margin: 15 auto;
     width: 300px;
     max-width: 100%;
 }
