@@ -10,39 +10,23 @@
 <script type="module" src="GlobalUtil.js"></script>
 <nav>
   <div class="Toolbar">
-    
-  
-
     <div class="Selectables">
 
       <!-- Loops through all links in navigation.yml and adds it to the above bar, if it's our current link, we change the element's color so it appears selected. -->
-
           {% for item in site.data.navigation %}
             <div 
-
             {% if page.url == item.link %}
               class ="Current"
             {% else %} 
               class="special"
             {% endif %}> 
-
               <a href="{{ site.baseurl }}{{ item.link }}" class="Link"> 
                 {{ item.name }}
               </a>
             </div>
-
-
-          
-        
-
           {% endfor %}
-          
-          
-          
           <!-- This needs to be done outside of the navigation loop as this goes out of the webpage-->
-
           <a class ="special" href="https://github.com/Colin12345678910">Github</a>
-
       </div>
 
       <div class="UpperLine"></div>
@@ -51,42 +35,26 @@
             <div class="Selectables">
               {% for item in site.data.UnityTech %}
               <div 
-
               {% if page.url == item.link %}
                 class ="Current"
               {% else %} 
                 class="special"
               {% endif %}> 
-  
                 <a href="{{ site.baseurl }}{{ item.link }}" class="Link"> 
                   {{ item.name }}
                 </a>
               </div>
-  
-  
-            
-          
-  
             {% endfor %}
             </div>
             <div class="UpperLine"></div>
       {% endif %}
   </div>
-  
-    
-    
   <footer>
     <div class="Line"></div>
     <div class="ContactMe">
-      
-      
-      
       <a class = "ContactMe" href="mailto:ColinDoubrough@gmail.com">
           Contact me: ColinDoubrough@gmail.com
       </a>
-      
     </div>
   </footer> 
-
-
 </nav>
