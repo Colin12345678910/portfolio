@@ -3,7 +3,7 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: default
-bkgrnd: assets/images/Regenerations.png
+bkgrnd: assets/images/Maple.png
 more: true
 ---
 # Minecraft Projects
@@ -11,6 +11,8 @@ more: true
 Alongside most of my regular game-specific projects, I have also worked on a handful of Minecraft Mods, I decided it would be nice to document them, even if they are overall smaller projects.
 
 # Stackable
+
+![Higher stack sizes](assets/images/Stackable.jpg "Higher stack sizes.")
 
 So this mod kinda came from design issue I've had with Minecraft for years, Inventory management sucks, you never seem to be able to hold everything you want. Your inventory feels cramped, not just in the amount of slots, but the total amount you can hold in any given slot. The official intended solution to this were shulkerboxes and bundles, but neither really hit the mark.
 
@@ -30,11 +32,17 @@ Regenerations was my first ever Minecraft Mod, three years old at this point, I 
 
 - New Birch forests.
 
-![New Birch forests.](assets/images/Regenerations.png "New Birch forests.")
+![New Birch forests.](assets/images/Birch.png "New Birch forests.")
 
 
 I really wanted to focus on verticality, I always loved the scale of large old trees in real life, and was always somewhat dissapointed in Minecraft's small forests. So I learned how to write Fabric mods and designed and created a custom trunkplacer based on the unused concept art shown at Minecraft Live.
 
 - Maple forests
 
+![Maple forests.](assets/images/Maple.png "New Maple forest.")
+
 So this was an experiment in learning how a more complex procedural feature could be created, so I made my own trunkplacer which would recursively place smaller branches starting from the main trunk until the next branch would be smaller than a block. Ultimately, I think this came out looking really nice, and while It's not how I would approach the problem nowadays, I still think I could take inspiration from it's design to do something similar if I ever needed to create more custom generation.
+
+# Source code
+
+The source for Stackable is open under a CC0 license on [Github](https://github.com/LinkachuGaming/Stackable). whereas I have left Regenerations as all rights reserved, both [Stackable](https://www.curseforge.com/minecraft/mc-mods/stackable127) and [Regenerations](https://www.curseforge.com/minecraft/mc-mods/regenerations) are available on Curseforge if you want to look further into either project.
