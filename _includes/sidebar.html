@@ -1,0 +1,12 @@
+{% if page.sidebar %}
+<div class="sidebarContent">
+          <!-- Loops through all links in navigation.yml and adds it to the above bar, if it's our current link, we change the element's color so it appears selected. -->
+          {% for item in site.data.Sidebar[page.sidebar] %}
+            <div> 
+              <a href="{{ site.baseurl }}{{ item.link }}" class="Link"> 
+                <h3>{{ item.name }}</h3>
+              </a>
+            </div>
+          {% endfor %}
+</div>
+{% endif %}
