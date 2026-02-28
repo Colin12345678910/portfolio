@@ -2,9 +2,9 @@ sidebarVK:
   - name: Overview
     link: Vulkan
   - name: Basic Rendering
-    link: /VK/Basic/
+    link: /VK/Basic
   - name: GLTF models
-    link: /VK/GLTF/
+    link: /VK/GLTF
   - name: Shadowmapping
     link: /VK/ShadowsPCF
   - name: Compute Skybox
