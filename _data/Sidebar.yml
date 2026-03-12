@@ -1,6 +1,6 @@
 sidebarVK:
   - name: Overview
-    link: Vulkan
+    link: /Vulkan
   - name: Basic Rendering
     link: /VK/Basic
   - name: GLTF models

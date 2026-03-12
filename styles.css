@@ -12,38 +12,43 @@
 
 
 body {
-    background-color: rgb(39, 36, 51);
+    background-color: #3a3560;
     font:
       1.5em/150% "Courier Prime",
       Arial,
       monospace;
     margin: 0 auto;
     background-repeat:no-repeat;
-    background-image:-moz-linear-gradient(rgb(61, 52, 95), rgb(39, 36, 51));
+    /*background-image:-moz-linear-gradient(rgb(63, 49, 119), rgb(30, 25, 51))*/;
     
+      background:
+    radial-gradient(circle at 20% 20%, #3a3560 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, #3a3560 0%, transparent 40%),
+    #1a182c;
     /*max-width: 100em;*/
     
   }
 p
 {
     font:
-    1.0em/100% "Open Sans",
+    1.0em/100% "Inter",
     Arial,
     sans-serif;
     align-self: auto;
     font-weight: 200;
-    line-height: 1.8;
+    line-height: 1.75;
     flex-shrink: 15px;
     margin:var(--text-margin);
     max-width: var(--text-width);
-    padding-bottom: 50px;
+    padding-bottom: 20px;
+    margin-bottom: 1.5em;
     
     color: rgb(255, 255, 255);
 }
 li
 {
     font:
-    1.5em/100% "Open Sans",
+    1.5em/100% "Inter",
     Arial,
     sans-serif;
     font-weight: 500;
@@ -63,7 +68,7 @@ h1
 h2
 {
     font:
-    1.0em/100% "Open Sans",
+    1.5em/100% "Inter",
     Arial,
     sans-serif;
     font-weight: 500;
@@ -250,6 +255,8 @@ iframe
     display: block;
     margin: 0 auto;
     opacity: 100;
+    outline: 5px solid white;
+    z-index: -1;
 }
 iframe.fadeout
 {
@@ -266,6 +273,10 @@ img
     display: block;
     margin: 0 auto;
     max-width: 100%;
+    outline: 5px solid white;
+    filter: drop-shadow(5px 5px 25px black);
+    position: relative;
+    z-index: -1;
 }
 img.fadeout
 {
@@ -303,7 +314,7 @@ hr
 {
     display: flex;
     flex-direction: row;
-    max-width: 1920px;
+    max-width: 1280px;
     margin: 0 auto;
 }
 .sidebarContent

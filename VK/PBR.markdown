@@ -11,13 +11,17 @@ bkgrnd: assets/images/Vulkan_PBR.jpg
 
 Now this is the exciting part of rendering, where stuff starts to look good and not just passable.
 
-Now, I must preface this by saying that this is when my engine shifted from implementing things I knew from school and previous projects to implementing new features. As such, this is where I swapped from leaning on my existing knowledge and resources on Vulkan to working on new things. Therefore, I had to follow [learnOpenGL](https://learnopengl.com/PBR/Lighting) [1] when it came to understanding the math behind PBR, and I will be referencing it heavily.
+Now, I must preface this by saying that this is when my engine shifted from implementing things I knew from school and previous projects to implementing new features. As such, this is where I swapped from leaning on my existing knowledge and resources on Vulkan to working on new things. 
 
-So to start off, we should talk a little, not much, but it helps ground why I am doing the things I want to. So, most renderers are trying to achieve photorealism, or at least enough photorealism to support their stylization goals. In the prerendered world, this has been achieved through ray tracing, path tracing, and, of course, physically based materials for quite a while. However, in real-time, using all of these is too slow or must be used sparingly. However, the principles behind PBR doesn't require real-time raytracing, BRDFs can be apporixmated using precomputed textures, BRDF LUTs, Irradiance, and prefiltered environment specular maps. 
+Therefore, I had to follow [learnOpenGL](https://learnopengl.com/PBR/Lighting) [1] when it came to understanding the math behind PBR, and I will be referencing it heavily.
+
+So to start off, we should talk a little, not much, but it helps ground why I am doing the things I want to. So, most renderers are trying to achieve photorealism, or at least enough photorealism to support their stylization goals.
+
+In the prerendered world, this has been achieved through ray tracing, path tracing, and, of course, physically based materials for quite a while. However, in real-time, using all of this is too slow and must be used sparingly. However, the principles behind PBR doesn't require real-time raytracing, BRDFs can be apporixmated using precomputed textures, BRDF LUTs, Irradiance, and prefiltered environment specular maps. 
 
 ## Texture maps
 
-So firstly, before we can really start working on anything PBR, I needed to implement the changes to support PBR textures and import them into my shaders so they can be used to define the object's material properties. For this engine, I am supporting PBR materials authored with a normal texture and ORM (Occlusion, Roughness, Metallic) texture supplied by the GLTF file. 
+So firstly, before we can really start working on anything PBR, I needed to implement the changes to support PBR textures and import them into my shaders so they can be used to define the object's material properties. For this engine, I am supporting PBR materials authored with a normal texture and **ORM** *(Occlusion, Roughness, Metallic)* texture supplied by the GLTF file. 
 
 ![A debug render displaying the normal map as a diffuse texture]({{site.baseurl}}/assets/images/Vulkan_DebugNormal.jpg)
 Here's our normal textures applied to Sponza
@@ -30,9 +34,13 @@ Once loaded, these files can actually be used in a traditional non-PBR workflow 
 ![Using an ORM to denote specular strength]({{site.baseurl}}/assets/images/Vulkan_ORM.jpg)
 ORMs are quite handy even outside of a PBR setting.
 
-Now, at this point, we just need to import the normal texture; this one is a little more difficult since the direction of the normal will change as the object is rotated in 3D space. However, the texture will only ever describe normals in tangent space, which is as described by LearnOpenGL: "Tangent space is a space that's local to the surface of a triangle: the normals are relative to the local reference frame of the individual triangles. Think of it as the local space of the normal map's vectors" [[2]](https://learnopengl.com/Advanced-Lighting/Normal-Mapping). We can easily create a TBN matrix that can convert to and from tangent and world space by using the tangents and normal values present in the GLTF and calculating the remaining bitangent.
+Now, at this point, we just need to import the normal texture; this one is a little more difficult since the direction of the normal will change as the object is rotated in 3D space. However, the texture will only ever describe normals in tangent space, which is as described by [LearnOpenGL](https://learnopengl.com/Advanced-Lighting/Normal-Mapping): 
 
-My implementation does end up differing from learnOpenGL a bit, mainly because I decided not to translate the lighting equations into tangent space, and instead convert the tangent-based normals into world space. Mainly, I decided the performance benefits weren't worth the headache dealing with tangent-space lighting could incur, and that I should focus on ease of iteration since I still needed to implement the rest of what's required for PBR.
+"Tangent space is a space that's local to the surface of a triangle: the normals are relative to the local reference frame of the individual triangles. Think of it as the local space of the normal map's vectors" [[2]](https://learnopengl.com/Advanced-Lighting/Normal-Mapping). 
+
+We can easily create a TBN matrix that can convert to and from tangent and world space by using the tangents and normal values present in the GLTF and calculating the remaining bitangent.
+
+My implementation does end up differing from LearnOpenGL a bit, mainly because I decided not to translate the lighting equations into tangent space, and instead convert the tangent-based normals into world space. Mainly, I decided the performance benefits weren't worth the headache dealing with tangent-space lighting could incur, and that I should focus on ease of iteration since I still needed to implement the rest of what's required for PBR.
 
 ![The floor of sponza, with a normal map applied]({{site.baseurl}}/assets/images/Vulkan_NormalMap.jpg)
 As can be seen, normal maps can really make scenes pop with detail that we could never hope to model.
@@ -90,19 +98,31 @@ Reinhard
 
 ![Sponza with Reinhard]({{site.baseurl}}/assets/images/Vulkan_Reinhard.jpg)
 
-Reinhard is one of the simplest tonemappers that exists, and it kinda shows; it replicates the colours of my standard material renderer well, making it good for more subtle implementations of PBR (perhaps something stylized with brighter colours to begin with?). However, when used in a more realistic scene, the muted shadows and dull colours aren't awful, but pale in comparison to other renderers.
+Reinhard is one of the simplest tonemappers that exists, and it kinda shows; it replicates the colours of my standard material renderer well, making it good for more subtle implementations of PBR (perhaps something stylized with brighter colours to begin with?).
+
+However, when used in a more realistic scene, the muted shadows and dull colours aren't awful, but pale in comparison to other renderers.
 
 ACES
 
 ![Sponza with ACES]({{site.baseurl}}/assets/images/Vulkan_ACES.jpg)
 
-ACES is a major improvement in most ways from Reinhard. Shadows are darker, the colour of the sunlit banners is vibrant and punchy, and the detail of moss growing on the stone bricks is preserved in comparison to Reinhard. The image has a much higher contrast overall, and areas hit by sunlight feel realistically bright. However, the banners in shadow are much darker than Reinhard and can look a little muddy in comparison. This type of tonemapping feels the most realistic out of all of them, being almost filmic in nature. Unfortunately, the crushed darks are just a bit too much to sacrifice in my opinion.
+ACES is a major improvement in most ways from Reinhard. Shadows are darker, the colour of the sunlit banners is vibrant and punchy, and the detail of moss growing on the stone bricks is preserved in comparison to Reinhard.
+
+The image has a much higher contrast overall, and areas hit by sunlight feel realistically bright. However, the banners in shadow are much darker than Reinhard and can look a little muddy in comparison. 
+
+This type of tonemapping feels the most realistic out of all of them, being almost filmic in nature. Unfortunately, the crushed darks are just a bit too much to sacrifice in my opinion.
 
 PBRNeutral
 
 ![Sponza with PBRNeutral]({{site.baseurl}}/assets/images/Vulkan_PBRNeutral.jpg)
 
-This tonemapper was created by the Khronos group to create a standard for tonemapping in rendering applications, and honestly, it does a great job. Like ACES, the shadows remain dark, but instead of becoming somewhat muted, their colours and, in turn, details are preserved. The moss growing on the stone bricks is far more obvious in comparison to Reinhard or even ACES, and you can even tell that moss grows on the underside of the arches in the Sponza scene. The areas hit by sunlight remain realistically bright, but the banners remain vibrant even when occluded by shadows. The biggest downside is that this tone mapper seems to blueshift the image slightly, and darker areas become somewhat blue instead of black; whether or not this is a major issue comes down to artistic taste. Realistically, the shadows are too blue, but blue is a common substitution for blacks when shading shadows in traditional art, so the effect looks more painterly(is that the right word?) than inaccurate.
+This tonemapper was created by the Khronos group to create a standard for tonemapping in rendering applications, and honestly, it does a great job. Like ACES, the shadows remain dark, but instead of becoming somewhat muted, their colours and, in turn, details are preserved.
+
+The moss growing on the stone bricks is far more obvious in comparison to Reinhard or even ACES, and you can even tell that moss grows on the underside of the arches in the Sponza scene. The areas hit by sunlight remain realistically bright, but the banners remain vibrant even when occluded by shadows. 
+
+The biggest downside is that this tone mapper seems to blueshift the image slightly, and darker areas become somewhat blue instead of black; whether or not this is a major issue comes down to artistic taste. 
+
+Realistically, the shadows are too blue, but blue is a common substitution for blacks when shading shadows in traditional art, so the effect looks more painterly(is that the right word?) than inaccurate.
 
 ## Conclusion
 

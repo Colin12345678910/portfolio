@@ -48,4 +48,7 @@
   min-width: 200px;
   max-width: 1000px;
   margin: 0 auto;
+  filter: drop-shadow(5px 5px 25px black);
+  position: relative;
+  z-index: -1;
 }

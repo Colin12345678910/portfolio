@@ -82,11 +82,15 @@ Now I am going to gloss over this a little bit, mostly because this isn't paticu
 
 Whenever you develop any real-time renderer, you usually want double buffering to deal with tearing, but typically the GPU and CPU is only rendering one frame at any given time, usually in a pattern of.
 
+```
 CPU working -> GPU idles -> CPU completes it's work -> GPU works -> CPU idles -> GPU finishes -> CPU starts it's new frame -> etc
+```
 
-Of course, this results in idle time on both devices, on the CPU side, we really don't care too much, this renderer is not pushing CPU limits at all, but on the GPU this could be quite a significant amount of performance to leave on the table. There in lies the point of Frames in flight, what if while frame is "in flight" to the GPU, we could start on another.
+This results in idle time on both devices, on the CPU side, we really don't care too much, this renderer is not pushing CPU limits at all, but on the GPU this could be quite a significant amount of performance to leave on the table. There in lies the point of Frames in flight, what if while frame is "in flight" to the GPU, we could start on another.
 
+```
 CPU working -> GPU idles -> CPU completes it's work -> GPU works -> CPU starts a new frame -> GPU finishes -> GPU can either immediately start again, or has to wait a reduced time.
+```
 
 Of course, in order to achieve this, we need multiple copies of CommandBuffers, images, fences and semaphores, but this small overhead in memory is entirely worth the performance benefits on the table from this approach. In fact, I decided to do some very unscientific testing, in an completely empty scene, implementing frames in flight can improve performance by nearly 12.5% or 17.5% in our default Sponza test scene. (Note: There is definitely run to run variance, but I didn't account for this)
 
@@ -129,7 +133,7 @@ Triangles: 481104
 Drawcalls: 186
 ```
 
-## finally rendering
+## Finally rendering
 
 I'm rather sorry for front-loading a ton of information without showing anything too interesting, unfortunately, when it comes to Vulkan, there's a lot before you get to rendering any single triangle, more importantly, I don't have too many screenshots of the earlier versions of this engine, the first screenshot is actually the first model I actually loaded into the engine.
 
@@ -144,9 +148,3 @@ As I was talking about earlier, we are using Storage Buffers with the BufferDevi
 ![Some texture mapped ducks]({{site.baseurl}}/assets/images/Vulkan_TextureMapping.png)
 
 Texture mapping is pretty much the same as in DirectX, we just modify the underlying Vertex structure to pass some UV coordinates from our engine to our shader. Here's a fun little screenshot of a couple Ducks rendering with error textures, as a bit of a fun fact, I believe these are from the PS3 technical showcase and were provided to Khronos by Sony.
-
-# Scenes?
-
-At this point there really isn't much to do besides starting to implement GLTF scenes and start drawing entire scenes rather than individual models.
-
-[Next article]({{site.baseurl}}/VK/GLTF)
